@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:activiti="http://activiti.org/bpmn"
+             targetNamespace="http://www.activiti.org/test">
+    <process id="leaveProcess" name="请假审批流程">
+        <startEvent id="startEvent" name="开始" />
+        <sequenceFlow id="flow1" sourceRef="startEvent" targetRef="userTask1" />
+
+        <!-- 第一步：员工提交申请 -->
+        <userTask id="userTask1" name="员工提交请假申请" activiti:assignee="${employee}" />
+        <sequenceFlow id="flow2" sourceRef="userTask1" targetRef="userTask2" />
+
+        <!-- 第二步：主管审批 -->
+        <userTask id="userTask2" name="主管审批" activiti:assignee="${manager}" />
+        <sequenceFlow id="flow3" sourceRef="userTask2" targetRef="endEvent" />
+
+        <!-- 结束 -->
+        <endEvent id="endEvent" name="结束" />
+    </process>
+</definitions>
