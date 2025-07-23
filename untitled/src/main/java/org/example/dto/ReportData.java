@@ -1,6 +1,4 @@
-package org.example;
-
-import com.deepoove.poi.data.PictureRenderData;
+package org.example.dto;
 
 public class ReportData {
 
